@@ -1,6 +1,6 @@
 # mind-log
 
-一个记录随时想法的简易播客系统
+一个记录随时想法的简易博客系统
 
 ## 技术架构
 
@@ -19,8 +19,8 @@ ui 组件：chakra-ui
 
 ## 目录说明
 
-** `/server` **
+**`/server`**
 python 后台项目，包管理器是 pipenv
 
-** `/client` **
+**`/client`**
 react 的 web 项目，包管理器是 yarn
