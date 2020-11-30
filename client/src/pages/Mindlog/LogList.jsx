@@ -1,49 +1,36 @@
-import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-  Editable, EditableInput,
-} from '@chakra-ui/react';
-import {delMindlog,addMindlog,listMindlog} from '../../apis/mindlog'
+import React, { useState, useEffect } from 'react';
+import { Container, Box, Text } from '@chakra-ui/react';
+import { delMindlog, addMindlog, listMindlog } from '../../apis/mindlog';
 
+function App(props) {
+  const [logList, setLogList] = useState([]);
 
-function App() {
+  useEffect(() => {
+    listMindlog().then(res => {
+      setLogList(res.data);
+    });
+  }, []);
 
-    const logList = [
-        {
-            content:'this is first',
-            createdTime:'20201130-1851'
-        },
-        {
-            content:'这是第二篇这是第二篇这是第二篇这是第二篇这是第二篇这是第二篇这是第二篇这是第二篇',
-            createdTime:'20201130-1851'
-        },
-        {
-            content:'this is third',
-            createdTime:'20201130-1851'
-        }
-    ]
-
-    const logDivList = logList.map((item)=>{
-        <Box>
-            <h2>{item.conten}</h2>
-            <Text>{item.conten}</Text>
-            <Text fontSize="sm" color="gray.500">{item.createdTime}</Text>
+  const logDivList = logList.map(item => {
+    return (
+      <Container key={item.content} maxW="xl" centerContent={false}>
+        <Box
+          padding="4"
+          bg="gray.100"
+          maxW="3xl"
+          marginTop="2"
+          borderRadius="md"
+        >
+          <Text>{item.content}</Text>
+          <Text fontSize="sm" color="gray.500">
+            {item.createdTime}
+          </Text>
         </Box>
-    })
+      </Container>
+    );
+  });
 
-  return (
-      <Box>
-        {logDivList}
-      </Box>
-   
-  );
+  return <Box>{logDivList}</Box>;
 }
 
 export default App;

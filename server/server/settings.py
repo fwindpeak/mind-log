@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'mindlog'
 ]
@@ -124,5 +125,11 @@ STATIC_URL = '/static/'
 
 
 CORS_ORIGIN_WHITELIST = (
-     'localhost:3000/'
+     'https://localhost:3000',
+     'http://localhost:3000'
+     
  )
+
+MIDDLEWARE_CLASSES = (
+'store.disable.DisableCSRF',
+)

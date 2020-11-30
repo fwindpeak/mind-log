@@ -16,7 +16,7 @@ import Mindlog from './pages/Mindlog/Mindlog'
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
+      <Box textAlign="center" fontSize="xl" p="2">
        <Mindlog></Mindlog>
       </Box>
     </ChakraProvider>
